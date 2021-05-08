@@ -1,0 +1,26 @@
+\input{common/head}
+
+\newcounter{bibliosel}
+\setcounter{bibliosel}{0}
+
+
+\begin{document}
+	\counterwithin{lstlisting}{section}
+	\counterwithin{figure}{section}
+	\counterwithin{equation}{section}
+	
+	\include{sections/title}
+	\include{sections/abstract}
+	\tableofcontents
+	\include{sections/introduction}
+	\include{sections/section-1}
+	\include{sections/section-2}
+	\include{sections/section-3}
+	\include{sections/conclusion}
+	
+	
+	\bibliographystyle{BibTeX-Styles/utf8gost71u}
+	%\bibliographystyle{ugost2008}
+	\bibliography{biblio/external}
+\addcontentsline{toc}{section}{\protect\numberline{}Список литературы}
+\end{document}

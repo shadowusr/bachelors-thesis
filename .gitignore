@@ -1,3 +1,6 @@
+*.DS_Store*
+temp-*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
