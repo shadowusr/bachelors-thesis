@@ -1,63 +1,224 @@
-\section{Архитектура и используемые технические средства}
+\section{Разработка backend части приложения}
 
-%\subsection{Микросервисная архитектура приложения}
-%Микросервисная архитектура — распространенный подход к разработке программного обеспечения, когда приложение разбивается на небольшие автономные компоненты (микросервисы) с четко определенными интерфейсами. Именно эта архитектура характерна для cloud-native приложений, которые сейчас популярны благодаря преимуществам, что открывают для бизнеса облачные среды.
-%
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.7\textwidth]{microservices}
-%	\caption{Пример микросервисной архитектуры.}
-%	\label{fig:microservices}
-%\end{figure}
-%{\color{red} TODO https://mcs.mail.ru/blog/prostym-jazykom-o-mikroservisnoj-arhitekture }
-%
-%К преимуществам такой архитектуры можно отнести следующие факторы:
-%\begin{itemize}
-%	\item Можно развертывать только изменяющиеся микросервисы, независимо от остальной системы, что позволяет производить обновления чаще и быстрее.
-%	\item Можно расширять только те сервисы, которые в этом нуждаются, то есть сервисы с наименьшей производительностью, оставляя работать остальные части системы на менее мощном оборудовании.
-%	\item Отказ одного сервиса не приводит к остановке системы в целом. Когда же ошибка исправлена, необходимое изменение можно развернуть только для соответствующего сервиса — вместо повторного развертывания всего приложения. Правда, для этого еще на этапе проектирования микросервисов потребуется тщательно продумать связи между ними для достижения максимальной независимости друг от друга, а также заложить возможность корректного оповещения пользователя о временной недоступности определенного сервиса без ущерба для всей системы.
-%	\item Можно подбирать различные наборы технологий, оптимальные для решения задач, стоящих перед отдельными сервисами.
-%	\item Присутствует возможность повторного использования функциональности для различных целей и различными способами.
-%	\item Небольшие сервисы проще заменить на более подходящую версию или удалить вовсе — это несет значительно меньше рисков по сравнению с монолитным приложением.
-%\end{itemize}
-%
-%\subsection{TypeScript}
-%TypeScript — это язык программирования, в котором исправлены многие недостатки JavaScript. Код на TypeScript выглядит почти так же, как и код на JS, и, если у вас есть опыт frontend-разработки, изучить TypeScript достаточно просто. Особенно учитывая, что вы можете писать JS-код прямо в TS-скриптах.
-%
-%Код на TypeScript компилируется в JS и подходит для разработки любых проектов под любые браузеры — тем более что можно выбрать версию JS, в которую будет компилироваться код.
-%
-%TypeScript — проект с открытым исходным кодом, поэтому он очень быстро развивается. Многое, что появляется в TS, позже переходит и в JavaScript: например, let и const, стрелочные функции и так далее.
-%
-%В TypeScript типизация статическая, что избавляет от множества проблем. Есть числовой тип, строковый, логический и другие.
-%
-%И в JS, и в TS есть поддержка объектно-ориентированного программирования: классы, объекты, наследование. Однако TypeScript шагнул чуть дальше и использует больше возможностей ООП.
-%
-%\subsection{React Native}
-%
-%Кроссплатформенная разработка приложений позволяет разработчикам создавать мобильные приложения для нескольких операционных систем одновременно. Проще говоря, эти приложения будут совместимы как с Android, так и с iOS. Он предоставляет разработчикам возможность создавать приложения на базе одного кода и разворачивать их на всех других платформах, что позволяет выпускать программное обеспечение/продукт намного быстрее и качественнее. Кроме того, такой продукт получается более безопасным.
-%
-%React Native это библиотека JavaScript, которая используется для разработки приложений для систем iOSи Android.
-%
-%React Native отличный инструмент для разработки сложных кросс-платформенных приложений. Если вы планируете масштабный и популярный продукт, подумайте о том, чтобы использовать React Native. Он имеет обширную документацию и сильную техподдержку. Кроме того, стоит выбирать React Native, если вы планируете повторно использовать код для настольного приложения и WEB-приложения.
-%
-%Принципы работы React Native практически идентичен ReactJS, кроме того, что React Nativeне управляет DOM через Virtual DOM. Он непосредственно работает в фоновом режиме на устройстве пользователя, что объясняет JavaScript, написанный разработчиками.
-%
-%Кроме того, он взаимодействует с собственным устройством через сериализацию, пакетный мост и облегчает асинхронную связь. React Native не использует HTML. Он использует чистый JavaScript с синтаксисом JSX.
-%
-%{
-%	\color{red}
-%Two years after the 2015 ReactJS release, Facebook created React Native. While the ReactJS library is developed for creating web interfaces, React Native is a hybrid app-development framework for iOS and Android that allows you to reuse up to 95 percent of code leaving the rest to designing platform-specific interfaces.
-%
-%React and React Native: what the difference? All technical differences between them are caused by platform aims.
-%
-%While ReactJS uses Virtual DOM to render browser code, React Native uses native APIs as a bridge to render components on mobile. For example, for Android components, it uses Java APIs and it invokes Objective-C API to render to iOS.
-%React Native doesn’t use HTML. So, if you worked with ReactJS before, you’ll have to get familiar with React Native syntax. For example, it uses <Text> instead of <p> and <View> instead of <div>.
-%Because React Native doesn’t use CSS, standard CSS-features like animation run with React Native special APIs.
-%
-%The working principles of React Native are virtually identical to React except that React Native does not manipulate the DOM via the Virtual DOM. It runs in a background process (which interprets the JavaScript written by the developers) directly on the end-device and communicates with the native platform via serialized data over an asynchronous and batched bridge.[16][17][18]
-%
-%React components wrap existing native code and interact with native APIs via React’s declarative UI paradigm and JavaScript. This enables native app development for whole new teams of developers, and can let existing native teams work much faster.[19]
-%
-%While React Native styling has a similar syntax to CSS, it does not use HTML or CSS.[20] Instead, messages from the JavaScript thread are used to manipulate native views. React Native also allows developers to write native code in languages such as Java or Kotlin for Android and Objective-C or Swift for iOS, which makes it even more flexible.
-%}
+\subsection{Постановка задачи}
+В существующих backend технологиях наблюдается большое разнообразие, и каждый из языков или фреймворков предлагает свои преимущества. Так, например, Discord использует Elixir в задачах, связанных с многопоточностью\cite{discord-elixir} и Rust в местах, где необходима максимальная производительность\cite{discord-rust}. Google широко применяет C++ и Python. В своей работе мы также можем не привязываться к технологиям, используемым в фронтенде приложения, тем не менее, мы остановим свой выбор на TypeScript --- единый язык позволит облегчить поддержку сервиса, кроме того JavaScript/TypeScript обладает развитой экосистемой библиотек, пакетов, инструментов и широкой поддержкой по платформам.
 
+В данном разделе мы ставим цель реализовать все требуемые сервисы, которые требует фронтенд --- мобильное приложения. Возникает задача разработки следующих компонентов:
+\begin{itemize}
+	\item Регистрация и аутентификация пользователей.
+	\item Хранение истории изученных слов, прохождения тестов, настроек и прочих данных, а также синхронизация этой информации между устройствами.
+	\item Сервис проверки и анализа произношения.
+	\item Сервис генерации текста заданной направленности.
+	\item Сервис синтеза речи.
+	\item Сервис классификации текста по темам.
+	\item Контроль доступа пользователей к контенту.
+\end{itemize}
+
+Далее в этом разделе мы рассмотрим реализацию поставленных задач и интеграцию этих компонентов с существующим мобильным приложением.
+
+\subsection{Проектирование и реализация backend сервиса}
+\subsubsection{Обзор}
+Модель platform-as-service (PaaS), становится всё более популярной ввиду своих преимуществ в сравнении с традиционными методами разворачивания и хостинга приложений. PaaS позволяет своим потребителям абстрагироваться от инфраструктурных деталей, за счет чего ускоряется процесс разработки и доставки программного обеспечения. Кроме того, PaaS берут на себя вопросы масштабирования и поддержки аппаратной части системы, что открывает возможности по гибкой адаптации к растущей нагрузке.
+
+Как уже упоминалось в предыдущем разделе, в качестве платформы реализации backend мы будем использовать PaaS Firebase\cite{firebase-overview}. Firebase --- это облачная система сервисов от Google, позволяющая разрабатывать, собирать и масштабировать backend, использующийся в мобильном приложении. Firebase позволяет экономить время разработчика, так как предоставляет ряд готовых к использованию компонентов, в число которых входит аутентификация, аналитика, облачное хранилище, менеджер уведомлений и хостинг кастомных функций. Firebase --- часть Google Cloud, сервиса Google, предоставляющего вычислительные мощности общего назначения. Построенный на основе Google Cloud, Firebase имеет выраженную направленность в сторону разработки мобильных приложений и связанных с ними программных средств.
+
+Помимо Firebase далее мы рассмотрим применение сервиса облачных вычислений Microsoft Azure\cite{azure-cognitive-services}. Функциональность и назначение данных платформ являются схожими, однако Azure предоставляет ряд уникальных интересующих нас сервисов, связанных с алгоритмами машинного обучения.
+
+\subsubsection{Аутентификация пользователей}
+Интеграция с Firebase позволяет нашему приложению использовать разнообразные методы аутентификации пользователей: вход через социальные сети, такие, как Facebook или Twitter; регистрация по электронной почте. В Firebase работа с аутентификацией устроена на основе событий. Так, соответствующие обработчики вызываются в случае, если пользователь вошел в аккаунт или зарегистрировался, вышел из аккаунта или токен доступа обновился. Пример использования системы аутентификации можно увидеть в листинге \ref{lst:firebase-auth}.
+\begin{lstlisting}[basicstyle=\fontsize{11}{11}\selectfont,tabsize=4,breaklines=true,caption={Пример обработки событий аутентификации.},captionpos=b,label={lst:firebase-auth}]
+import React, { useState, useEffect } from 'react';
+import { View, Text } from 'react-native';
+import auth from '@react-native-firebase/auth';
+
+function App() {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState();
+  
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(user => { setUser(user); setLoading(false); });
+    return () => subscriber();
+  });
+  
+  if (!user) {
+    return (<View><Text>Login</Text></View>);
+  }
+  return (
+    <View><Text>Hello, {user.name}</Text></View>
+  );
+}
+\end{lstlisting}
+
+\subsubsection{Хранилище данных приложения}
+В качестве основного хранилища данных мы будем использовать Firestore. Этот сервис сочетает в себе NoSQL базу данных, возможности для синхронизации данных в реальном времени, кэширование для оффлайн доступа к контенту и гибкое разграничение привилегий пользователей.
+
+Для начала работы необходимо создать базу данных через консоль управления Firebase и установить SDK из npm. После этого можно приступать к взаимодействию с базой. Все данные в Firestore хранятся в документах, а документы --- в коллекциях.
+
+Ниже приводится список коллекций, которые мы используем в работе приложения:
+\begin{itemize}
+	\item users --- аккаунты пользователей. Заполняется при регистрации и содержит основную информацию профиля;
+	\item words --- все слова, доступные для изучения. Заполняется администратором приложения, содержит базу всех слов и связанных с ними данных, которые доступны для изучения. Информация о каждом слове включает в себя такие поля, как: транскрипция, массив слов переводов, массив примеров с переводами, ссылка на аудио--файл с произношением в Cloud Storage;
+	\item feed --- лента карточек на главной странице. Заполняется планировщиком автоматически и содержит копии слов из коллекции words;
+	\item settings --- настройки приложения. Хранит один документ на одного пользователя, заполняется при регистрации, меняется каждый раз при изменении настроек;
+	\item favorites --- список избранных карточек. Заполняется по нажатию кнопки <<добавить в избранное>> на главном экране. Хранит идентификаторы документов из коллекции feed.
+\end{itemize}
+
+Такая структура соответствует поставленным задачам и предусматривает возможное расширение функционала. Рассмотрим пример использования Firestore для загрузки карточек главной страницы на листинге \ref{lst:feed-screen-firestore}. В дополнение к SDK для FIrebase, будем использовать пакет @react-native-firebase, предоставляющий интеграцию Firebase с React Native.
+
+\begin{lstlisting}[basicstyle=\fontsize{11}{11}\selectfont,tabsize=4,breaklines=true,caption={Загрузка и синхронизация данных с Firestore.},captionpos=b,label={lst:feed-screen-firestore}]
+import React, { useState, useEffect } from 'react';
+import { ActivityIndicator } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+
+function Feed() {
+  const currentUserId = //...;
+  const [loading, setLoading] = useState(true);
+  const [words, setWords] = useState([]);
+  
+  useEffect(() => {
+    const subscriber = firestore().collection('feed').where('user', '==', currentUserId).onSnapshot(snapshot => {
+      const words = [];
+      snapshot.forEach(document => {
+        words.push({ ...document.data(), key: document.id });
+      });
+      
+      setWords(words);
+      setLoading(false);
+    });
+    
+    // returning a cleanup function to unsubscribe from events
+    return () => subscriber();
+  }, []);
+  
+  if (loading) {
+    return <ActivityIndicator/>
+  }
+  
+  return (
+    <FlatList
+      ListHeaderComponent={<Header/>}
+      ListHeaderComponentStyle={flatListHeaderStyles}
+      data={words}
+      renderItem={(word) => <WordCard word={word} />}
+    />
+  );
+}
+\end{lstlisting}
+
+
+\subsubsection{Проверка и анализ произношения}
+В качестве основы реализации анализа ошибок произношения мы будем использовать Azure Cognitive Services. Сервис производить проверку речи студента и получать детальные метрики качества и разбор отклонений в произношении каждой фонемы. В листинге \ref{lst:azure-pronunciation} мы демонстрируем распознавание речи с помощью данного сервиса.
+
+\begin{lstlisting}[basicstyle=\fontsize{11}{11}\selectfont,tabsize=4,breaklines=true,caption={Пример проверки произношения с помощью Azure.},captionpos=b,label={lst:azure-pronunciation}]
+const config = new SpeechSDK.PronunciationAssessmentConfig("reference text",
+  PronunciationAssessmentGradingSystem.HundredMark,
+  PronunciationAssessmentGranularity.Word, true);
+const recognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, audioConfig);
+
+pronunciationAssessmentConfig.applyTo(recognizer);
+
+speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) => {
+  const pronunciationAssessmentResult = SpeechSDK.PronunciationAssessmentResult.fromResult(result);
+  const pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
+  const wordLevelResult = pronunciationAssessmentResult.detailResult.Words;
+}, {});
+\end{lstlisting}
+
+Данные, получаемые из Azure Cognitive Services, позволяют выводить исчерпывающую информацию для студента в интерфейс приложения --- см. рисунок \ref{fig:pronunciation-card}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{pronunciation-card}
+	\caption{Пример результата анализа произношения.}
+	\label{fig:pronunciation-card}
+\end{figure}
+
+\subsubsection{Синтез речи}
+Инструменты синтеза речи необходимы на этапе формирования изначальной базы слов, которая хранится в коллекции words. В качестве реализации механизма синтеза речи мы будем использовать один из инструментов Azure Cognitive Services, позволяющий генерировать качественную речь заданного содержания. На листинге \ref{lst:azure-pronunciation} приводится пример синтеза речи по фрагменту текста с последующим сохранением в файл.
+
+\begin{lstlisting}[basicstyle=\fontsize{11}{11}\selectfont,tabsize=4,breaklines=true,caption={Пример проверки произношения с помощью Azure.},captionpos=b,label={lst:azure-pronunciation}]
+const speechConfig = sdk.SpeechConfig.fromSubscription("key", "region");
+const audioConfig = AudioConfig.fromAudioFileOutput("speech.wav");
+
+const synthesizer = new SpeechSynthesizer(speechConfig, audioConfig);
+synthesizer.speakTextAsync(
+    "There's a difference between following the path and knowing the path.",
+    result => {
+        synthesizer.close();
+        if (result) {
+            return fs.createReadStream("speech.wav");
+        }
+    },
+    error => {
+        console.log(error);
+        synthesizer.close();
+    });
+\end{lstlisting}
+
+Результирующие звуковые файлы мы будем сохранять в Firebase Cloud Storage для дальнейшего использования в приложении. Ссылки на данные аудиофайлы в Storage также хранятся в документах коллекции words. Пример выгрузки аудио файла в Cloud Storage приводится на листинге \ref{lst:firebase-storage-upload}.
+
+\begin{lstlisting}[basicstyle=\fontsize{11}{11}\selectfont,tabsize=4,breaklines=true,caption={Пример выгрузки аудио в Cloud Storage.},captionpos=b,label={lst:firebase-storage-upload}]
+const config = // ...;
+firebase.initializeApp(config);
+
+const storage = firebase.storage();
+
+const speechRef = storage.child('speech.wav');
+
+speechRef.putFile('/path/to/file.wav').then(() => console.log('Audio uploaded!'));
+\end{lstlisting}
+
+\subsubsection{Классификация текстов по темам и сложности}
+Классификация слов по темам и сложности также необходима не стадии формирования базы слов для обеспечения персонализированного подхода к обучению. Для оценки сложности и выборки тем, к которым может относиться слово, мы будем использовать TwinWord API\cite{twinword-overview}. Пример получения сложности слова приводится в листинге \ref{lst:word-difficulty}.
+
+\begin{lstlisting}[basicstyle=\fontsize{11}{11}\selectfont,tabsize=4,breaklines=true,caption={Пример получения сложности слова.},captionpos=b,label={lst:word-difficulty}]
+const axios = require('axios');
+
+axios.post('https://twinword-language-scoring.p.rapidapi.com/word/', {
+  entry: 'perseverance'
+}, { headers: /* auth... */ })
+  .then(response => console.log(response.data));
+  // { ten_degree: 7, value: 0.49925, /* ... */ }
+\end{lstlisting}
+
+При помощи аналогичного запроса на листинге \ref{lst:word-topic} мы получим список тем, к которым относится слово.
+
+\begin{lstlisting}[basicstyle=\fontsize{11}{11}\selectfont,tabsize=4,breaklines=true,caption={Пример получения тем, к которым относится слово.},captionpos=b,label={lst:word-topic}]
+const axios = require('axios');
+
+axios.post('https://twinword-topic-tagging.p.rapidapi.com/generate/', {
+  text: 'perseverance'
+}, { headers: /* auth... */ })
+  .then(response => console.log(response.data));
+  // { topic: { art: 0.2, machine: 0.23, technology: 0.18, study: 0.3 } }
+\end{lstlisting}
+
+API возвращает набор тем их весов, мы же для того, чтобы объединить большое количество разных тем объединяем эти темы в группы и смотрим на суммарные очки каждой группы. Темы, которые не попали ни в одну из групп, мы относим к категории <<общих>> слов. Таким образом мы объединяем десятки узко специализированных тем в несколько интересующих нас более широких.
+
+\subsubsection{Генерация текста на заданную тематику}
+Для генерации базы примеров мы используем два источника --- примеры из Azure Cognitive Services и автоматическую генерацию текста по заданному слову. Генерация текста производится с помощью API сервиса Inferkit (листинг \ref{lst:inferkit-generator}).
+
+\begin{lstlisting}[basicstyle=\fontsize{11}{11}\selectfont,tabsize=4,breaklines=true,caption={Пример генерации текста с помощью Inferkit.},captionpos=b,label={lst:inferkit-generator}]
+const axios = require('axios');
+
+axios.post('https://api.inferkit.com/v1/models/standard/generate', {
+  prompt: {
+    text: "Perseverance"
+  },
+  length: 100,
+}, { headers: /* auth... */ })
+  .then(response => /* handling the reponse */);
+\end{lstlisting}
+
+Перевод текста на родной для студента язык производится с помощью Azure Cognitive Services.
+
+\subsection{Вывод по разделу}
+В разделе были представлены ключевые компоненты backend части приложения по изучению иностранных языков на React Native. 
+
+Мы рассмотрели несколько платформ облачных вычислений, в частности, Google Cloud с Firebase и Microsoft Azure. Firebase является основой функционирования серверной части приложения, и все запросы приложение выполняет именно к нему.
+
+Мы представили основные пункты реализации аутентификации пользователей с помощью Firebase. Далее была реализована работа с хранилищем данных приложения в Firestore, выделены основные структурные особенности.
+
+Наконец, мы рассмотрели применение API различных сервисов, реализующих алгоритмы машинного обучения: Azure Cognitive Services, TwinWord и Inferkit. Мы применяем Azure для решения задач связанных с распознаванием речи, а остальные сервисы --- при работе с текстом.
+
+В данном разделе мы построили реализацию backend части сервиса, завершая таким образом разработку приложения.
